@@ -1,0 +1,43 @@
+CE QUI EST FAIT
+
+Afficher les customers
+Recherche d'un client
+Creer les custumers
+Afficher les comptes
+Recherche d'un comptes
+Afficher toutes les operation d'un compte avec une pagination
+Effectuer les operations de debit,credit,transfert
+
+RESTE A FAIRE
+
+
+ajouter un bouton qui permet d'afficher la liste des comptes d'un client
+Login authentification/et deconexion
+Gestion de l'application en fonction d'un utilisateur qui se connecte(admin ou user)
+Gerer la partie Admin coté Backend (Ajouter user,Bloquer un compte,supprimer un compte,Editer un compte)
+Afficher unique ment les compte de l'utilisateur authentiifié
+Quand il est authentifié il peut voir vl'historique de ses compte et faire les opperation comme se qui a ete fait
+Securiser l'acces au url avec les guards angular
+Bien Afficher les exceptions gere en back du coté front
+Envoyer une requete au backend popur recuper les comptes d'un customer en fonction de son id(ecrire la méthode coté backend dans back accountServiceImpl en passant par BankAccountRepository )
+
+A RETENIR DE cE QUI A ETE FAIT (Ne pas oublier chatGpt en cas de problème pour trouve une solution)
+
+1-passer d'un composant à un autre avec le systeme de routage via la methode navigateByUrl()
+ 1-1- Recuper l'id d'un objet passer en parametre dans une route avec la methode snapsnot() de  ActivatedRoute  
+2-Comment passer un objet d'un composant à un autre via le systeme de routage avec le paramatre state qu'on envoie à l'url du composant qui doit envoyer l'objet 
+3- recuperer l'objet qui a été envoyé avec le state dans un autre composant en utilisant la méthode getCurrentNavigation()
+4- utiliser les pipe noter "|" dans les fichier html pour formater les données et afficher les valeur des objets json
+
+5- Schema de l'architecture
+            {{}}                          injection du ou des Services
+                                          dans le component
+Vue(Html)----------->Component(TypeScript:appel les methodes des services)--------------------->Service(typeScript)---------->Backend
+          data binding
+
+
+
+
+6- Utiliser les formulaires reactifs avec les validations
+7-Utiliser toujours la programmation asynchrone en retournant à chaque fois les observables dans les services et les subscribe 
+dans les appels des méthodes du service(cela optimise les perfommance et la rapidité de l'application)
