@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { Customer } from '../model/customer.model';
 import { environnemnt } from '../../environnements/environnement';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,13 @@ export class CustomerService {
 
 
   backendHost:string="http://localhost:8085/customers";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private authService:AuthService) { }
 
   public getCustomers():Observable<Customer[]>{
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.accessToken);
     let rnd=Math.random();
     if(rnd<0.1) return throwError(()=>new Error("Internet connexion error"));
-   else  return this.http.get<Array<Customer>>(environnemnt.backendHost+"/customers"
+   else  return this.http.get<Array<Customer>>(environnemnt.backendHost+"/customers",{headers}
    );
   }
 
@@ -25,7 +27,8 @@ export class CustomerService {
     }
 
     public saveCustomer(customer: Customer):Observable<Customer>{
-      return this.http.post<Customer>(environnemnt.backendHost+"/customers",customer);
+      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.accessToken);
+      return this.http.post<Customer>(environnemnt.backendHost+"/customers",customer,{headers});
     }
 
     public deleteCustomer(id: number){
